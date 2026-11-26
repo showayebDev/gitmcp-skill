@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "gitmcp-skill",
+  "description": "Universal /gitmcp skill and GitMCP remote MCP server bundle.",
+  "owner": {
+    "name": "showayebDev"
+  },
+  "plugins": [
+    {
+      "name": "gitmcp",
+      "description": "Live GitHub documentation, source code, and llms.txt lookup via GitMCP.",
+      "category": "documentation",
+      "source": "./"
+    }
+  ]
+}

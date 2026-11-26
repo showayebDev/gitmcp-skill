@@ -1,0 +1,7 @@
+interface:
+  display_name: "GitMCP"
+  short_description: "Fetch live GitHub docs, code & llms.txt via GitMCP"
+  brand_color: "#24292F"
+  default_prompt: "Use $gitmcp to fetch the latest documentation and code for a library or GitHub repo."
+policy:
+  allow_implicit_invocation: true
