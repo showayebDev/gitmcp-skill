@@ -116,6 +116,8 @@ Note: You still need to register the `gitmcp` MCP server in each agent (see sect
 
 ## 6. Claude Web (`claude.ai`)
 
+> Note: Web chats run in an ephemeral sandbox and cannot persistently install skills from a chat prompt.
+
 1. **Upload the Skill (Pro / Max / Team / Enterprise with Code execution enabled)**:
    - Ensure **Settings > Capabilities > Code execution and file creation** is enabled.
    - Open **Customize > Skills** (or **Settings > Capabilities > Skills**).
@@ -128,7 +130,7 @@ Note: You still need to register the `gitmcp` MCP server in each agent (see sect
    - **Remote MCP server URL**: `https://gitmcp.io/docs`
    - Enable the `GitMCP` connector in your chat.
 3. **Free Plan / No-Connector Alternative (Claude Projects)**:
-   - Create a Claude Project and paste `configs/web-system-prompt.md` into **Project Instructions**.
+   - Click **Projects** in the left sidebar, create a Project, and paste `configs/web-system-prompt.md` into **Project Instructions**.
 
 ---
 

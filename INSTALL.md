@@ -96,19 +96,17 @@ npx skills add showayebDev/gitmcp-skill --skill gitmcp -g
 ---
 
 ### 5. Claude Web (`claude.ai`)
-To get the full experience on Claude Web, set up both the Skill and the Custom Connector:
+> **Important:** You cannot install a skill into Claude Web by pasting a GitHub link inside a chat (web chats run in an ephemeral sandbox that resets per session). Use one of the options below based on your plan:
 
-1. **Upload the Skill (`.zip`):**
-   - In `claude.ai`, ensure **Settings > Capabilities > Code execution and file creation** is enabled.
+1. **Paid Plans (Pro / Max / Team / Enterprise) — Upload Skill + Connector:**
+   - Ensure **Settings > Capabilities > Code execution and file creation** is enabled.
    - Open **Customize > Skills** (or **Settings > Capabilities > Skills**) and click **Add skill / Upload skill**.
    - Upload [`dist/gitmcp.zip`](./dist/gitmcp.zip) from this repository and toggle the `gitmcp` skill **ON**.
-2. **Add GitMCP Custom Connector (Live MCP Tools):**
-   - Go to **Customize > Connectors** (or **Settings > Connectors**) and click **+ Add > Add custom connector**.
-   - **Name:** `GitMCP`
-   - **Remote MCP server URL:** `https://gitmcp.io/docs`
-   - Save and enable the `GitMCP` connector in your chat.
-3. **Free Plan / No-Connector Alternative (Claude Projects):**
-   - Create a **Claude Project** and paste the prompt from [`configs/web-system-prompt.md`](./configs/web-system-prompt.md) into **Project Instructions**.
+   - Go to **Customize > Connectors** (or **Settings > Connectors**), click **+ Add > Add custom connector**, name it `GitMCP`, and set URL to `https://gitmcp.io/docs`.
+2. **Free Plan (No Skills Upload / Connectors) — Use Claude Projects:**
+   - Click **Projects** in the left sidebar of `claude.ai` and create a new Project (e.g., `GitMCP Docs`).
+   - Paste the prompt from [`configs/web-system-prompt.md`](./configs/web-system-prompt.md) into **Project Instructions**.
+   - Ask all coding/library questions inside that Project so Claude fetches `https://gitmcp.io/{owner}/{repo}/llms.txt` automatically.
 
 ---
 

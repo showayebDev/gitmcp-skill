@@ -26,7 +26,7 @@ From the user's prompt, identify the library, framework, or GitHub repository:
 - If no mapping is found (for example, `elysia` -> `elysiajs/elysia` and `elysiajs/documentation`), use the verified official `owner/repo` (or check via web search if available — never guess an unfamiliar `owner/repo`).
 
 ### 2. Fetch Latest Documentation & Code via `gitmcp` MCP Tools
-Invoke the tools exposed by the `gitmcp` MCP server (depending on the client, tools may appear directly by name, prefixed like `mcp__gitmcp__*`, or via `call_mcp_tool` with `ServerName: "gitmcp"`):
+Call the tools exposed by the `gitmcp` MCP server:
 1. **`search_generic_documentation`** (`owner`, `repo`, `query`):
    - Start here for targeted concepts (routing, plugins, auth, config, hooks, etc.).
    - Some projects keep docs in a separate repo (e.g., `elysiajs/documentation` vs `elysiajs/elysia`). If the main repo returns only a minimal README, also query the dedicated docs repo or its `llms.txt`.
@@ -42,16 +42,22 @@ Invoke the tools exposed by the `gitmcp` MCP server (depending on the client, to
 - Cite the GitHub repository (`owner/repo`) or official URL you queried.
 
 ### 4. If `gitmcp` MCP Tools Are Not Available in This Session
-- **Web Clients (Claude Web / ChatGPT Web) without MCP connected**:
-  - If web browsing/fetch is available, fetch `https://gitmcp.io/{owner}/{repo}/llms.txt` or `https://raw.githubusercontent.com/{owner}/{repo}/main/README.md` as a temporary fallback, and show the user how to connect the `https://gitmcp.io/docs` connector in settings (see `references/platform-setup.md`).
-- **CLI / IDE Agents (Antigravity, Gemini CLI, Claude Code, Codex, Cursor, etc.)**:
+- **Web Chats (`claude.ai` / `chatgpt.com`)**:
+  - A web chat sandbox cannot persistently install skills or MCP connectors into your account from a chat message.
+  - If web browsing/fetch is available, fetch `https://gitmcp.io/{owner}/{repo}/llms.txt` or `https://raw.githubusercontent.com/{owner}/{repo}/main/README.md` as a fallback.
+  - Guide the user to persist it via UI:
+    - **Paid Web Plans**: Upload `dist/gitmcp.zip` in **Skills** and add `https://gitmcp.io/docs` as a **Custom Connector / MCP**.
+    - **Free Web Plans (e.g., Claude Web Free)**: Paste `configs/web-system-prompt.md` into **Claude Projects > Project Instructions** (or **ChatGPT Custom Instructions**).
+- **Local CLI / IDE Agents (Antigravity, Gemini CLI, Claude Code, Codex, Cursor, etc.)**:
   - Follow **Bootstrap & Setup on a New Device** below (and `references/platform-setup.md` for exact file paths and commands), then ask the user to start a new session or reload MCP servers.
 
 ---
 
-## Bootstrap & Setup on a New Device (For AI Agents)
+## Bootstrap & Setup on a New Device (For Local AI Agents)
 
-When a user asks you to install this skill and configure GitMCP on their machine, detect which AI client(s) they use (or install for the requested client) using the exact paths in `references/platform-setup.md`:
+When a user asks you to install this skill and configure GitMCP:
+- **If you are a Web Chat (Claude Web / ChatGPT Web) without persistent local disk access**: Do **not** try to write files to `~/.gemini` or `~/.claude` in an ephemeral container, and do **not** claim this skill is only for Antigravity. Clearly tell the user how to enable it in the Web UI (Paid: upload `dist/gitmcp.zip` + add `https://gitmcp.io/docs` connector; Free: paste `configs/web-system-prompt.md` into **Projects / Custom Instructions**).
+- **If you are a Local CLI / IDE Agent**: Detect which AI client(s) the user has (or install for the requested client) using `references/platform-setup.md`:
 
 1. **Install `SKILL.md` (and `references/`, `agents/`)**:
    - **Universal (Skills CLI)**: `npx skills add showayebDev/gitmcp-skill --skill gitmcp -g`

@@ -56,11 +56,15 @@ npx skills add showayebDev/gitmcp-skill --skill gitmcp -g
 > - Asking your AI: *"Check my installed `gitmcp` skill and configure the `gitmcp` MCP server (`https://gitmcp.io/docs`) for this client."*
 > - Running your client's `mcp add` command or copying the snippet from [`configs/`](./configs) (see the table below).
 
-### Option 2: AI-Assisted Setup from GitHub (Configures Skill + `mcp_config.json`)
-Open any AI coding agent (Antigravity, Gemini CLI, Claude Code, Codex, Cursor) and prompt:
+### Option 2: AI-Assisted Setup from GitHub (Local CLI / IDE Agents Only)
+Open any **local** AI coding agent (Antigravity, Gemini CLI, Claude Code, Codex, Cursor) and prompt:
 > *"Read `https://github.com/showayebDev/gitmcp-skill` (`gitmcp/SKILL.md` and `gitmcp/references/platform-setup.md`), install the `gitmcp` skill, and configure the `gitmcp` MCP server (`https://gitmcp.io/docs`) for this AI client."*
 
-Because `SKILL.md` includes self-bootstrap instructions, the agent will install the skill **and** automatically add `"gitmcp"` to `mcp_config.json` (or `settings.json` / `.claude.json` / `config.toml`).
+Because `SKILL.md` includes self-bootstrap instructions, a local agent will install the skill **and** automatically add `"gitmcp"` to `mcp_config.json` (or `settings.json` / `.claude.json` / `config.toml`).
+
+> **Note for Web Chats (`claude.ai` / `chatgpt.com`):** Web chats run in an ephemeral sandbox and **cannot** install skills or MCP connectors from a chat prompt.
+> - **Claude Web Free Plan:** Open **Projects** in the left sidebar -> create a Project -> paste [`configs/web-system-prompt.md`](./configs/web-system-prompt.md) into **Project Instructions**.
+> - **Claude Web / ChatGPT Web Paid Plans:** Upload [`dist/gitmcp.zip`](./dist/gitmcp.zip) in **Skills** and add `https://gitmcp.io/docs` in **Connectors** (see the table below).
 
 ### Option 3: Automated Installer Script (Configures Skill + MCP Together)
 - **Windows (PowerShell)**:
